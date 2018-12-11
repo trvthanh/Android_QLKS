@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.trvthanh.qlks">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/main_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/main_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".QLDVActivity" />
+        <activity android:name=".QLKhachActivity" />
+        <activity android:name=".QLNVActivity" />
+        <activity android:name=".QLPhongActivity" />
+        <activity android:name=".ThemPhong">
+
+        </activity>
+    </application>
+
+</manifest>
