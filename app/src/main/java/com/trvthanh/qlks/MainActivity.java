@@ -15,6 +15,7 @@ import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -39,6 +40,20 @@ public class MainActivity extends Activity {
 
         db=new Database(getApplicationContext());
 
+        /*//Tao Phong
+        Phong phong1=new Phong(101,"1GĐơn","Đây là mô tả Phòng 101",200000);
+        Phong phong2=new Phong(102,"1GĐôi","Đây là mô tả Phòng 102",300000);
+
+        //Them Phong vao bang
+        long p1=db.createPhong(phong1);
+        long p2=db.createPhong(phong2);
+        if(p1>0 || p2> 0)
+        {
+            Toast.makeText(this,"Đã thêm vào csdl",Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this,"Failllllllllllllll",Toast.LENGTH_LONG).show();
+        }*/
         //Xử lí onClick cho các buttons
         btnCallActiPhong.setOnClickListener(new View.OnClickListener() {
             @Override

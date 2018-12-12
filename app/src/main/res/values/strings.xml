@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">QLKS</string>
+
+    //List Loại Phong(cbxThemPhong)
+    <string-array name="LoaiPhong">
+        <item>1GĐơn</item>
+        <item>2GĐơn</item>
+        <item>1GĐôi</item>
+        <item>2GĐôi</item>
+    </string-array>
 </resources>

@@ -6,6 +6,7 @@ public class Phong {
     String LoaiPhong;
     String MoTa;
     int Gia;
+
     public int getMaPhong() {
         return MaPhong;
     }
@@ -17,6 +18,7 @@ public class Phong {
     public String getMoTa() {
         return MoTa;
     }
+
     public int getGia() {
         return Gia;
     }
@@ -24,6 +26,7 @@ public class Phong {
     public void setGia(int gia) {
         Gia = gia;
     }
+
     public void setMaPhong(int maPhong) {
         MaPhong = maPhong;
     }
@@ -42,5 +45,14 @@ public class Phong {
         LoaiPhong = loaiPhong;
         MoTa = moTa;
         Gia = gia;
+    }
+
+    public Phong()
+    {
+    }
+
+    @Override
+    public String toString() {
+        return getMaPhong()+"";
     }
 }
