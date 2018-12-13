@@ -12,7 +12,47 @@
         style="@style/header"
         android:text="QL KHÁCH"
         android:layout_gravity="center"
-
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MỜI BẠN CHỌN CHỨC NĂNG CẦN DÙNG"
+            android:gravity="center"
+            android:textSize="20dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Xem Danh Sách Khách hàng"
+            android:textSize="15dp"
+            android:id="@+id/btnDanhSachKhachHang"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm Khách hàng"
+            android:textSize="15dp"
+            android:id="@+id/btnThemKhachHang"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sửa thông tin khách hàng"
+            android:textSize="15dp"
+            android:id="@+id/btnSuaKhachHang"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Xóa khách hàng"
+            android:textSize="15dp"
+            android:id="@+id/btnXoaKhachHang"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tìm khách hàng"
+            android:textSize="15dp"
+            android:id="@+id/btnTimKhachHang"/>
+    </LinearLayout>
 
 </LinearLayout>

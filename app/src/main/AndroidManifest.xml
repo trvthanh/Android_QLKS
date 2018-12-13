@@ -20,9 +20,8 @@
         <activity android:name=".QLKhachActivity" />
         <activity android:name=".QLNVActivity" />
         <activity android:name=".QLPhongActivity" />
-        <activity android:name=".ThemPhong">
-
-        </activity>
+        <activity android:name=".ThemPhong"></activity>
+        <activity android:name=".XemDanhSachKhachHang"></activity>
     </application>
 
 </manifest>
