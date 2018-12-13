@@ -28,9 +28,10 @@ public class QLPhongActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.qlphong_layout);
+        int mp=123;
         db = new Database(getApplicationContext());
-        //Phong phong = new Phong(123, "abc", "hjhjhj", 10000);
-        //db.createPhong(phong);
+//        Phong phong = new Phong(mp, "abc", "hjhjhj", 10000,"Còn Trống");
+//        db.createPhong(phong);
         btnThemPhong = (Button) findViewById(R.id.btnThemPhong);
 
         btnThemPhong.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +43,7 @@ public class QLPhongActivity extends Activity {
         });
 
         // Lay tat ca phong
-        Log.d("Lay Phong", "lay tat ca phong");
+       // Log.d("Lay Phong", "lay tat ca phong");
 
         allPhong = new ArrayList<>();
         allPhong.addAll(db.getAllPhong());

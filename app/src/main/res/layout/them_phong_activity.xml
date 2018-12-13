@@ -7,14 +7,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ThemPhong">
+    <TableRow
+       android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/textView0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã phòng:"
+            android:textSize="18sp" />
+        <EditText
 
+            android:id="@+id/txtMaPhong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Mã phòng ..."/>
+
+
+    </TableRow>
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Loại phòng:"
@@ -25,6 +44,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/LoaiPhong"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái:"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/cbxTrangThai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/TrangThai"/>
 
     </TableRow>
 

@@ -9,7 +9,10 @@ import android.view.Window;
 import android.widget.Button;
 
 
-
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -26,6 +29,7 @@ public class MainActivity extends Activity {
     private Button btnCallActiNV;
 
     Database db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,50 +42,72 @@ public class MainActivity extends Activity {
         btnCallActiKhach = (Button) findViewById(R.id.btnKhach);
         btnCallActiNV = (Button) findViewById(R.id.btnNhanVien);
 
-        db=new Database(getApplicationContext());
+        db = new Database(getApplicationContext());
 
-        /*//Tao Phong
-        Phong phong1=new Phong(101,"1GĐơn","Đây là mô tả Phòng 101",200000);
-        Phong phong2=new Phong(102,"1GĐôi","Đây là mô tả Phòng 102",300000);
+        //Tao Phong
+        Phong phong1 = new Phong(101, "1GĐơn", "Đây là mô tả Phòng 101", 200000, "Còn trống");
+        Phong phong2 = new Phong(102, "1GĐôi", "Đây là mô tả Phòng 102", 300000, "Còn trống");
 
         //Them Phong vao bang
-        long p1=db.createPhong(phong1);
-        long p2=db.createPhong(phong2);
-        if(p1>0 || p2> 0)
-        {
-            Toast.makeText(this,"Đã thêm vào csdl",Toast.LENGTH_LONG).show();
-        }
-        else{
-            Toast.makeText(this,"Failllllllllllllll",Toast.LENGTH_LONG).show();
-        }*/
+        db.createPhong(phong1);
+        db.createPhong(phong2);
+
+        //Tao Dich vu
+        DichVu dichVu1 = new DichVu(1, "Ăn Sáng", "Đây là mô tả dv ăn sáng", "Bữa", 50000);
+        DichVu dichVu2 = new DichVu(2, "Ăn Trưa", "Đây là mô tả dv ăn trưa", "Bữa", 60000);
+
+        db.createDV(dichVu1);
+        db.createDV(dichVu2);
+
+        //Tao Khach Hàng
+        Khach khach1 = new Khach("123456789", "Phạm Đức Tính", "123 đường abc", "0963123621", true);
+        Khach khach2 = new Khach("095265489", "Nguyễn Lê Thanh Tuấn", "456 đường xyz", "05665561", true);
+        db.createKhach(khach1);
+        db.createKhach(khach2);
+
+        //tao Nhân viên
+        Date d1 = new Date(1990,1,12);
+        NhanVien nhanVien1 = new NhanVien(123, "Phạm Đức Tính", "566456545",d1, "123 đường abc", "0123456789", true);
+        Date d2 = new Date(1990,8,5);
+        NhanVien nhanVien2 = new NhanVien(132, "Nguyễn lê Thanh Tuấn", "963456545",d1, "456 đường abc", "09632561789", true);
+        db.createNV(nhanVien1);
+        db.createNV(nhanVien2);
         //Xử lí onClick cho các buttons
         btnCallActiPhong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,QLPhongActivity.class);
+                Intent intent = new Intent(MainActivity.this, QLPhongActivity.class);
                 startActivity(intent);
             }
         });
         btnCallActiDV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, QLDVActivity.class);
+                Intent intent = new Intent(MainActivity.this, QLDVActivity.class);
                 startActivity(intent);
             }
         });
         btnCallActiKhach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,QLKhachActivity.class);
+                Intent intent = new Intent(MainActivity.this, QLKhachActivity.class);
                 startActivity(intent);
             }
         });
         btnCallActiNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this,QLNVActivity.class);
+                Intent intent = new Intent(MainActivity.this, QLNVActivity.class);
                 startActivity(intent);
             }
         });
+
     }
+    public Date stringToDate(String[] args,String s)throws Exception
+    {
+        Date d1=new SimpleDateFormat("dd/MM/yyyy").parse(s);
+        return d1;
+    }
+
 }
+

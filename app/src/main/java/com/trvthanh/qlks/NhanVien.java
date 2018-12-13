@@ -35,8 +35,8 @@ public class NhanVien {
         this.CMND = CMND;
     }
 
-    public Date getNgaySinh() {
-        return NgaySinh;
+    public String getNgaySinh() {
+        return NgaySinh+"";
     }
 
     public void setNgaySinh(Date ngaySinh) {

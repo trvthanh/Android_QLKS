@@ -8,7 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
@@ -32,12 +35,13 @@ public class Database extends SQLiteOpenHelper {
     private static final String KEY_LOAIPHONG = "LoaiPhong";
     private static final String KEY_MOTAPHONG = "MoTa";
     private static final String KEY_GIAPHONG = "Gia";
+    private static final String KEY_TRANGTHAI = "TrangThai";
 
     // Phong table create statement
     private static final String CREATE_TABLE_PHONG = "CREATE TABLE "
             + TABLE_PHONG + " (" + KEY_MAPHONG + " INTEGER PRIMARY KEY," + KEY_LOAIPHONG
             + " TEXT," + KEY_MOTAPHONG + " TEXT," + KEY_GIAPHONG
-            + " INTEGER" + " )";
+            + " INTEGER," + KEY_TRANGTHAI + " TEXT" + " )";
 
 
     // Dich Vu Table - column names
@@ -108,6 +112,7 @@ public class Database extends SQLiteOpenHelper {
         // create new tables
         onCreate(db);
     }
+//Convert ngay
 
     // ------------------------ Phương Thức của bảng Phòng ----------------//
 
@@ -120,6 +125,7 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_LOAIPHONG, phong.getLoaiPhong());
         values.put(KEY_MOTAPHONG, phong.getMaPhong());
         values.put(KEY_GIAPHONG, phong.getGia());
+        values.put(KEY_TRANGTHAI,phong.getTrangThai());
 
         // insert row
         long p = db.insert(TABLE_PHONG, null, values);
@@ -144,6 +150,7 @@ public class Database extends SQLiteOpenHelper {
                 p.setLoaiPhong(c.getString(c.getColumnIndex(KEY_LOAIPHONG)));
                 p.setMoTa(c.getString(c.getColumnIndex(KEY_MOTAPHONG)));
                 p.setGia(c.getInt(c.getColumnIndex(KEY_GIAPHONG)));
+                p.setTrangThai(c.getString(c.getColumnIndex(KEY_TRANGTHAI)));
 
                 // adding to tags list
                 phongs.add(p);
@@ -158,9 +165,11 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+       // values.put(KEY_MAPHONG, phong.getMaPhong());
         values.put(KEY_LOAIPHONG, phong.getLoaiPhong());
-        values.put(KEY_MOTAPHONG, phong.getMaPhong());
+        values.put(KEY_MOTAPHONG, phong.getMoTa());
         values.put(KEY_GIAPHONG, phong.getGia());
+        values.put(KEY_TRANGTHAI, phong.getTrangThai());
 
         // updating row
         return db.update(TABLE_PHONG, values, KEY_MAPHONG + " = ?",
@@ -189,9 +198,66 @@ public class Database extends SQLiteOpenHelper {
                 phong.setLoaiPhong(c.getString(c.getColumnIndex(KEY_LOAIPHONG)));
                 phong.setMoTa(c.getString(c.getColumnIndex(KEY_MOTAPHONG)));
                 phong.setGia(c.getInt(c.getColumnIndex(KEY_GIAPHONG)));
+                phong.setTrangThai(c.getString(c.getColumnIndex(KEY_TRANGTHAI)));
             }
         return phong;
     }
+    // ------------------------ Phương Thức của bảng Dich vu ----------------//
 
+    //Them 1 dich vu
+    public long createDV(DichVu dv) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_MADV, dv.getMaDV());
+        values.put(KEY_TENDV, dv.getTenDV());
+        values.put(KEY_MOTADV, dv.getMoTaDV());
+        values.put(KEY_DVT, dv.getDVT());
+        values.put(KEY_GIADV,dv.getGia());
+
+        // insert row
+        long dv1 = db.insert(TABLE_DV, null, values);
+
+        return dv1;
+    }
+    // ------------------------ Phương Thức của bảng Khach Hang ----------------//
+
+    //Them 1 Khach hangf
+    public long createKhach(Khach khach) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_CMNDKH, khach.getCMND());
+        values.put(KEY_TENKH, khach.getTen());
+        values.put(KEY_DCKH,khach.getDiaChi() );
+        values.put(KEY_SDTKH, khach.getSDT());
+        values.put(KEY_GIOITINHKH,khach.getGioiTinh());
+
+        // insert row
+        long k = db.insert(TABLE_PHONG, null, values);
+
+        return k;
+    }
+    // ------------------------ Phương Thức của bảng Phòng ----------------//
+
+    //Them 1 Nhan vien
+    public long createNV(NhanVien nv) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_MaNV,nv.getMaNV() );
+        values.put(KEY_TENNV, nv.getTenNV());
+        values.put(KEY_CMNDNV,nv.getCMND() );
+        values.put(KEY_NGAYSINH,nv.getNgaySinh());
+        values.put(KEY_DCNV,nv.getDiaChi());
+        values.put(KEY_SDTNV,nv.getSDT());
+        values.put(KEY_GIOITINHNV,nv.getGioiTinh());
+
+
+        // insert row
+        long nv1 = db.insert(TABLE_PHONG, null, values);
+
+        return nv1;
+    }
 
 }

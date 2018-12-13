@@ -8,4 +8,11 @@
         <item>1GĐôi</item>
         <item>2GĐôi</item>
     </string-array>
+    //List trang thai phong
+    <string-array name="TrangThai">
+        <item>Còn trống</item>
+        <item>Đã thuê</item>
+        <item>Tạm dừng</item>
+
+    </string-array>
 </resources>

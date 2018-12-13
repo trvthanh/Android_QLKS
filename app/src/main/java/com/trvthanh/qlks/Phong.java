@@ -6,6 +6,7 @@ public class Phong {
     String LoaiPhong;
     String MoTa;
     int Gia;
+    String TrangThai;
 
     public int getMaPhong() {
         return MaPhong;
@@ -38,13 +39,21 @@ public class Phong {
     public void setMoTa(String moTa) {
         MoTa = moTa;
     }
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        TrangThai = trangThai;
+    }
 
 
-    public Phong(int maPhong, String loaiPhong, String moTa, int gia) {
+    public Phong(int maPhong, String loaiPhong, String moTa, int gia, String trangThai) {
         MaPhong = maPhong;
         LoaiPhong = loaiPhong;
         MoTa = moTa;
         Gia = gia;
+        TrangThai = trangThai;
     }
 
     public Phong()
