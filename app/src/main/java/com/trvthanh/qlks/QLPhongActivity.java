@@ -62,13 +62,13 @@ public class QLPhongActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Toast.makeText(getApplicationContext(),allPhong.get(position).getGia()+"",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(QLPhongActivity.this, ChiTietPhongActivity.class);
+               /* Intent intent = new Intent(QLPhongActivity.this, ChiTietPhongActivity.class);
                 intent.putExtra(MAPHONG, allPhong.get(position).getMaPhong());     //int
                 intent.putExtra(LOAIPHONG, allPhong.get(position).getLoaiPhong()); //string
                 intent.putExtra(MOTA, allPhong.get(position).getMoTa());           //string
                 intent.putExtra(GIA, allPhong.get(position).getGia());             //int---ko lay dc mo ta 102 ne
                 intent.putExtra(TRANGTHAI, allPhong.get(position).getTrangThai()); //string
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
 

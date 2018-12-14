@@ -61,6 +61,6 @@ public class Khach {
 
     @Override
     public String toString() {
-        return getCMND()+"";
+        return getTen()+"";
     }
 }
