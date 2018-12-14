@@ -112,32 +112,30 @@ public class Database extends SQLiteOpenHelper {
         // create new tables
         onCreate(db);
     }
-//Convert ngay
 
     // ------------------------ Phương Thức của bảng Phòng ----------------//
 
     //Tao 1 phòng
-    public long createPhong(Phong phong) {
+    public void createPhong(Phong phong) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_MAPHONG, phong.getMaPhong());
-        values.put(KEY_LOAIPHONG, phong.getLoaiPhong());
-        values.put(KEY_MOTAPHONG, phong.getMaPhong());
+        values.put(KEY_LOAIPHONG, phong.getLoaiPhong());//do
+        values.put(KEY_MOTAPHONG, phong.getMoTa());
         values.put(KEY_GIAPHONG, phong.getGia());
         values.put(KEY_TRANGTHAI,phong.getTrangThai());
 
         // insert row
-        long p = db.insert(TABLE_PHONG, null, values);
+        db.insert(TABLE_PHONG, null, values);
 
-        return p;
+
     }
     //Lay toan bo Phong
     public List<Phong> getAllPhong() {
         List<Phong> phongs = new ArrayList<Phong>();
         String selectQuery = "SELECT  * FROM " + TABLE_PHONG;
 
-        Log.e(LOG, selectQuery);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -187,7 +185,7 @@ public class Database extends SQLiteOpenHelper {
     //Lay 1 phong theo maphong
     public Phong getById(int maphong) {
         Phong phong=null;
-        String selectQuery = "SELECT  * FROM " + TABLE_PHONG +"WHERE MAPHONG='"+maphong+"'";
+        String selectQuery = "SELECT  * FROM " + TABLE_PHONG +"WHERE MAPHONG="+maphong+"";
         Log.e(LOG, selectQuery);
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -205,7 +203,7 @@ public class Database extends SQLiteOpenHelper {
     // ------------------------ Phương Thức của bảng Dich vu ----------------//
 
     //Them 1 dich vu
-    public long createDV(DichVu dv) {
+    public void createDV(DichVu dv) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -216,14 +214,14 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_GIADV,dv.getGia());
 
         // insert row
-        long dv1 = db.insert(TABLE_DV, null, values);
+         db.insert(TABLE_DV, null, values);
 
-        return dv1;
+
     }
     // ------------------------ Phương Thức của bảng Khach Hang ----------------//
 
     //Them 1 Khach hangf
-    public long createKhach(Khach khach) {
+    public void createKhach(Khach khach) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -234,14 +232,14 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_GIOITINHKH,khach.getGioiTinh());
 
         // insert row
-        long k = db.insert(TABLE_PHONG, null, values);
+         db.insert(TABLE_KHACH, null, values);
 
-        return k;
+
     }
-    // ------------------------ Phương Thức của bảng Phòng ----------------//
+    // ------------------------ Phương Thức của Nhan Vien ----------------//
 
     //Them 1 Nhan vien
-    public long createNV(NhanVien nv) {
+    public void createNV(NhanVien nv) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -253,11 +251,10 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_SDTNV,nv.getSDT());
         values.put(KEY_GIOITINHNV,nv.getGioiTinh());
 
-
         // insert row
-        long nv1 = db.insert(TABLE_PHONG, null, values);
+        db.insert(TABLE_NV, null, values);
 
-        return nv1;
+
     }
 
 }

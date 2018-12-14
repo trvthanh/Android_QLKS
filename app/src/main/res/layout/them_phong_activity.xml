@@ -69,9 +69,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-
-        android:layout_weight="9">
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/textView2"
@@ -80,25 +78,23 @@
             android:text="Mô tả:"
             android:textSize="18sp" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-
-                <EditText
-                    android:id="@+id/txtMoTa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Mô tả ..."
-                    android:inputType="textMultiLine"
-                    android:minLines="1"
-                    android:scrollHorizontally="false"
-                    android:text="" />
-
-        </ScrollView>
-
     </TableRow>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+
+            <EditText
+                android:id="@+id/txtMoTa"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:hint="Mô tả ..."
+                android:inputType="textMultiLine"
+                android:minLines="1"
+                android:scrollHorizontally="false"
+                android:text="" />
+
+    </ScrollView>
 
     <TableRow
         android:layout_width="match_parent"
