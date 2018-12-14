@@ -43,10 +43,10 @@ public class MainActivity extends Activity {
         btnCallActiNV = (Button) findViewById(R.id.btnNhanVien);
 
         db = new Database(getApplicationContext());
-
-        //Tao Phong
-        Phong phong1 = new Phong(101, "1GĐơn", "Đây là mô tả Phòng 101", 200000, "Còn trống");
-        Phong phong2 = new Phong(102, "1GĐôi", "Đây là mô tả Phòng 102", 300000, "Còn trống");
+        /*
+        //Tao Phong ok cho maphong vs trangthai luon m
+        Phong phong1 = new Phong(106, "1GĐơn", "Đây là mô tả Phòng 106", 200000, "Còn trống");
+        Phong phong2 = new Phong(107, "1GĐôi", "Đây là mô tả Phòng 107", 300000, "Còn trống");
 
         //Them Phong vao bang
         db.createPhong(phong1);
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
         Date d2 = new Date(1990,8,5);
         NhanVien nhanVien2 = new NhanVien(132, "Nguyễn lê Thanh Tuấn", "963456545",d1, "456 đường abc", "09632561789", true);
         db.createNV(nhanVien1);
-        db.createNV(nhanVien2);
+        db.createNV(nhanVien2);*/
         //Xử lí onClick cho các buttons
         btnCallActiPhong.setOnClickListener(new View.OnClickListener() {
             @Override

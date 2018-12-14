@@ -12,12 +12,24 @@ public class Phong {
         return MaPhong;
     }
 
+    public void setMaPhong(int maPhong) {
+        MaPhong = maPhong;
+    }
+
     public String getLoaiPhong() {
         return LoaiPhong;
     }
 
+    public void setLoaiPhong(String loaiPhong) {
+        LoaiPhong = loaiPhong;
+    }
+
     public String getMoTa() {
         return MoTa;
+    }
+
+    public void setMoTa(String moTa) {
+        MoTa = moTa;
     }
 
     public int getGia() {
@@ -28,17 +40,6 @@ public class Phong {
         Gia = gia;
     }
 
-    public void setMaPhong(int maPhong) {
-        MaPhong = maPhong;
-    }
-
-    public void setLoaiPhong(String loaiPhong) {
-        LoaiPhong = loaiPhong;
-    }
-
-    public void setMoTa(String moTa) {
-        MoTa = moTa;
-    }
     public String getTrangThai() {
         return TrangThai;
     }
@@ -46,7 +47,6 @@ public class Phong {
     public void setTrangThai(String trangThai) {
         TrangThai = trangThai;
     }
-
 
     public Phong(int maPhong, String loaiPhong, String moTa, int gia, String trangThai) {
         MaPhong = maPhong;
