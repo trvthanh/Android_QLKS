@@ -1,11 +1,15 @@
 package com.trvthanh.qlks;
 
 public class Khach {
-    String CMND;
-    String Ten;
-    String DiaChi;
-    String SDT;
-    Boolean GioiTinh;
+    private String CMND;
+    private String Ten;
+    private String DiaChi;
+    private String SDT;
+    private String GioiTinh;
+
+    public Khach() {
+
+    }
 
     public String getCMND() {
         return CMND;
@@ -20,7 +24,7 @@ public class Khach {
     }
 
     public void setTen(String ten) {
-        Ten = ten;
+        this.Ten = ten;
     }
 
     public String getDiaChi() {
@@ -28,7 +32,7 @@ public class Khach {
     }
 
     public void setDiaChi(String diaChi) {
-        DiaChi = diaChi;
+        this.DiaChi = diaChi;
     }
 
     public String getSDT() {
@@ -39,19 +43,24 @@ public class Khach {
         this.SDT = SDT;
     }
 
-    public Boolean getGioiTinh() {
+    public String getGioiTinh() {
         return GioiTinh;
     }
 
-    public void setGioiTinh(Boolean gioiTinh) {
-        GioiTinh = gioiTinh;
+    public void setGioiTinh(String gioiTinh) {
+        this.GioiTinh = gioiTinh;
     }
 
-    public Khach(String CMND, String ten, String diaChi, String SDT, Boolean gioiTinh) {
+    public Khach(String CMND, String ten, String diaChi, String SDT, String gioiTinh) {
         this.CMND = CMND;
-        Ten = ten;
-        DiaChi = diaChi;
+        this.Ten = ten;
+        this.DiaChi = diaChi;
         this.SDT = SDT;
-        GioiTinh = gioiTinh;
+        this.GioiTinh = gioiTinh;
+    }
+
+    @Override
+    public String toString() {
+        return getCMND()+"";
     }
 }

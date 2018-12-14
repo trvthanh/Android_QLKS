@@ -67,9 +67,9 @@ public class Database extends SQLiteOpenHelper {
 
     // Khach table create statement
     private static final String CREATE_TABLE_KHACH = "CREATE TABLE "
-            + TABLE_KHACH + " (" + KEY_CMNDKH + " INTEGER PRIMARY KEY," + KEY_TENKH
+            + TABLE_KHACH + " (" + KEY_CMNDKH + " TEXT PRIMARY KEY," + KEY_TENKH
             + " TEXT," + KEY_DCKH + " TEXT," + KEY_SDTKH
-            + " TEXT," + KEY_GIOITINHKH + " BOOLEAN"+ " )";
+            + " TEXT," + KEY_GIOITINHKH + " TEXT"+ " )";
 
     // Nhan Vien Table - column names
     private static final String KEY_MaNV   = "MaNV";
@@ -145,7 +145,8 @@ public class Database extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (c.moveToFirst()) {
             do {
-                Phong p = new Phong();
+                Phong p;
+                p = new Phong();
                 p.setMaPhong(c.getInt((c.getColumnIndex(KEY_MAPHONG))));
                 p.setLoaiPhong(c.getString(c.getColumnIndex(KEY_LOAIPHONG)));
                 p.setMoTa(c.getString(c.getColumnIndex(KEY_MOTAPHONG)));
@@ -214,15 +215,35 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_MOTADV, dv.getMoTaDV());
         values.put(KEY_DVT, dv.getDVT());
         values.put(KEY_GIADV,dv.getGia());
-
         // insert row
         long dv1 = db.insert(TABLE_DV, null, values);
-
         return dv1;
     }
     // ------------------------ Phương Thức của bảng Khach Hang ----------------//
+    //lay toan bo Khach
+    public List<Khach> LayKhach(){
+        List<Khach> laykhach=new ArrayList<Khach>();
+        String str="SELECT * FROM "+TABLE_KHACH;
+       // Log.e(LOG,str);
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor c=db.rawQuery(str,null);
 
-    //Them 1 Khach hangf
+        if(c.moveToFirst()){
+            do {
+                Khach k = new Khach();
+                k.setCMND(c.getString(c.getColumnIndex(KEY_CMNDKH)));
+                k.setTen(c.getString(c.getColumnIndex(KEY_TENKH)));
+                k.setDiaChi(c.getString(c.getColumnIndex(KEY_DCKH)));
+                k.setSDT(c.getString(c.getColumnIndex(KEY_SDTKH)));
+                k.setGioiTinh(c.getString(c.getColumnIndex(KEY_GIOITINHKH)));
+
+                laykhach.add(k);
+            }while(c.moveToNext());
+        }
+        return laykhach;
+    }
+
+    //Them 1 Khach hang
     public long createKhach(Khach khach) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -233,8 +254,9 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_SDTKH, khach.getSDT());
         values.put(KEY_GIOITINHKH,khach.getGioiTinh());
 
+
         // insert row
-        long k = db.insert(TABLE_PHONG, null, values);
+        long k = db.insert(TABLE_KHACH, null, values);
 
         return k;
     }

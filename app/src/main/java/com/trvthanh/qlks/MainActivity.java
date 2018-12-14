@@ -60,8 +60,8 @@ public class MainActivity extends Activity {
         db.createDV(dichVu2);
 
         //Tao Khach Hàng
-        Khach khach1 = new Khach("123456789", "Phạm Đức Tính", "123 đường abc", "0963123621", true);
-        Khach khach2 = new Khach("095265489", "Nguyễn Lê Thanh Tuấn", "456 đường xyz", "05665561", true);
+        Khach khach1 = new Khach("123456789", "Phạm Đức Tính", "123 đường abc", "0963123621", "Nam");
+        Khach khach2 = new Khach("095265489", "Nguyễn Lê Thanh Tuấn", "456 đường xyz", "05665561", "Nam");
         db.createKhach(khach1);
         db.createKhach(khach2);
 
