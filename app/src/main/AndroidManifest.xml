@@ -20,6 +20,7 @@
         <activity android:name=".QLKhachActivity" />
         <activity android:name=".QLNVActivity" />
         <activity android:name=".QLPhongActivity" />
+        <activity android:name=".ChiTietPhongActivity"/>
         <activity android:name=".ThemPhong"></activity>
     </application>
 
