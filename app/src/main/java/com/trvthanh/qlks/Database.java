@@ -178,12 +178,10 @@ public class Database extends SQLiteOpenHelper {
     }
 
     //Xoa 1 phong
-    public void deletePhong(Phong phong) {
+    public void deletePhong(int mp) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-
-        db.delete(TABLE_PHONG, KEY_MAPHONG + " = ?",
-                new String[] { String.valueOf(phong.getMaPhong()) });
+        db.delete(TABLE_PHONG, KEY_MAPHONG + " = ?", new String[] { String.valueOf(mp) });
+        db.close();
     }
     //Lay 1 phong theo maphong
     public Phong getById(int maphong) {
