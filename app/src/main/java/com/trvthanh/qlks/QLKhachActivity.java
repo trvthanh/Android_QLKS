@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class QLKhachActivity extends Activity {
@@ -20,12 +19,17 @@ public class QLKhachActivity extends Activity {
     private ListView lv;
     private ArrayAdapter<Khach> Adapter;
 
+    public static final String CMNDKH   = "CMNDKhachHang";
+    public static final String TENKH = "TenKH";
+    public static final String DCKH = "DiaChiKH";
+    public static final String SDTKH = "SDTKH";
+    public static final String GIOITINHKH = "GioiTinhKH";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.qlkhach_layout);
-
 
         //lay tat ca khach
 
@@ -37,11 +41,17 @@ public class QLKhachActivity extends Activity {
         lv.setAdapter(Adapter);
         Toast.makeText(getApplicationContext(),Laykhach.size()+"",Toast.LENGTH_LONG).show();
 
-
+        //truyen du lieu vao CMNDKH, TENKH....
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),Laykhach.get(position).getCMND()+"",Toast.LENGTH_LONG).show();;
+                Intent intent = new Intent(QLKhachActivity.this,ChiTietKhach.class);
+                intent.putExtra(CMNDKH,Laykhach.get(position).getCMND());
+                intent.putExtra(TENKH, Laykhach.get(position).getTen());
+                intent.putExtra(DCKH, Laykhach.get(position).getDiaChi());
+                intent.putExtra(SDTKH, Laykhach.get(position).getSDT());
+                intent.putExtra(GIOITINHKH, Laykhach.get(position).getGioiTinh());
+                startActivity(intent);
             }
         });
     }

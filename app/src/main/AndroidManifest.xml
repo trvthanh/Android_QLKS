@@ -20,11 +20,12 @@
         <activity android:name=".QLKhachActivity" />
         <activity android:name=".QLNVActivity" />
         <activity android:name=".QLPhongActivity" />
-        <activity android:name=".ChiTietPhongActivity"/>
-        <activity android:name=".Chitietnhanvien"/>
-        <activity android:name=".chitietdv"></activity>
-        <activity android:name=".ThemPhong"></activity>
-        <activity android:name=".ThemDichVuActivity"></activity>
+        <activity android:name=".ChiTietPhongActivity" />
+        <activity android:name=".Chitietnhanvien" />
+        <activity android:name=".chitietdv" />
+        <activity android:name=".ThemPhong" />
+        <activity android:name=".ThemDichVuActivity" />
+        <activity android:name=".ChiTietKhach"></activity>
     </application>
 
 </manifest>
