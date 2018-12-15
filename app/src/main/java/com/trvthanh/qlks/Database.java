@@ -246,6 +246,38 @@ public class Database extends SQLiteOpenHelper {
         long dv1 = db.insert(TABLE_DV, null, values);
         return dv1;
     }
+    //Lay toan bo Dich vu
+    public List<DichVu> getAllDichvu() {
+        List<DichVu> dichVus = new ArrayList<DichVu>();
+        String selectQuery = "SELECT  * FROM " + TABLE_DV;
+
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                DichVu dv;
+                dv = new DichVu();
+                dv.setMaDV(c.getInt((c.getColumnIndex(KEY_MADV))));
+                dv.setTenDV(c.getString(c.getColumnIndex(KEY_TENDV)));
+                dv.setMoTaDV(c.getString(c.getColumnIndex(KEY_MOTADV)));
+                dv.setDVT(c.getString(c.getColumnIndex(KEY_DVT)));
+                dv.setGia(c.getInt(c.getColumnIndex(KEY_GIADV)));
+
+                // adding to tags list
+                dichVus.add(dv);
+            } while (c.moveToNext());
+        }
+        return dichVus;
+    }
+    public void deleteDichVu(int maDv) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_DV, KEY_MADV + " = ?",
+                new String[] { String.valueOf(maDv) });
+    }
     // ------------------------ Phương Thức của bảng Khach Hang ----------------//
     //lay toan bo Khach
     public List<Khach> LayKhach(){

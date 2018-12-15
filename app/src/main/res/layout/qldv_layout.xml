@@ -12,8 +12,31 @@
         android:id="@+id/txtDV"
         style="@style/header"
         android:text="QL DỊCH VỤ"
-        android:layout_gravity="center"
+        android:layout_gravity="center" />
 
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnthemdv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Thêm dịch vụ" />
+
+        <Button
+            android:id="@+id/btnsuadv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Sửa dịch vụ" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listdv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -22,7 +22,9 @@
         <activity android:name=".QLPhongActivity" />
         <activity android:name=".ChiTietPhongActivity"/>
         <activity android:name=".Chitietnhanvien"/>
+        <activity android:name=".chitietdv"></activity>
         <activity android:name=".ThemPhong"></activity>
+        <activity android:name=".ThemDichVuActivity"></activity>
     </application>
 
 </manifest>

@@ -23,4 +23,11 @@
         <item>1GĐôi</item>
         <item>2GĐôi</item>
     </string-array>
+    <string-array name="DVT">
+        <item>Mát-xa</item>
+        <item>Buffet sáng</item>
+        <item>Buffet tối</item>
+        <item>Thuê xe</item>
+    </string-array>
+
 </resources>

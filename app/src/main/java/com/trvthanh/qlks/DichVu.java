@@ -1,6 +1,8 @@
 package com.trvthanh.qlks;
 
-public class DichVu {
+import java.io.Serializable;
+
+public class DichVu implements Serializable {
     int MaDV;
     String TenDV;
     String MoTaDV;
@@ -54,6 +56,13 @@ public class DichVu {
         this.DVT = DVT;
         Gia = gia;
     }
+    public DichVu(){
+
+    }
 
 
+    @Override
+    public String toString() {
+        return getMaDV()+"";
+    }
 }
