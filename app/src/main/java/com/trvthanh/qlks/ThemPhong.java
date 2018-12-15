@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class ThemPhong extends Activity {
     private EditText txtMaPhong;
     private Spinner cbxLoaiPhong;
@@ -19,6 +21,8 @@ public class ThemPhong extends Activity {
     private  EditText txtGia;
     private Button btnThem;
     Database db;
+
+    private ArrayList<Phong> allPhong=new ArrayList<Phong>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +42,28 @@ public class ThemPhong extends Activity {
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+
                 int mp=Integer.parseInt(txtMaPhong.getText().toString());
                 String lp=(String)cbxLoaiPhong.getSelectedItem();
                 String tt=(String)cbxTrangThai.getSelectedItem();
                 String mt=txtMoTa.getText().toString();
                 int g=Integer.parseInt(txtGia.getText().toString());
+
+                allPhong = new ArrayList<Phong>();
+                allPhong.addAll(db.getAllPhong());
+
+                for (int i=0;i<allPhong.size();i++)
+                {
+                    if(mp==allPhong.get(i).getMaPhong())
+                    {
+                        Toast.makeText(getApplicationContext(),"Đã tồn tại!",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                }
+
                Phong phong=new Phong(mp,lp,mt,g,tt);
                db.createPhong(phong);
                 Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();

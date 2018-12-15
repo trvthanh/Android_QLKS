@@ -15,4 +15,12 @@
         <item>Tạm dừng</item>
 
     </string-array>
+
+    <string-array name="LoaiPhong1">
+        <item>All</item>
+        <item>1GĐơn</item>
+        <item>2GĐơn</item>
+        <item>1GĐôi</item>
+        <item>2GĐôi</item>
+    </string-array>
 </resources>

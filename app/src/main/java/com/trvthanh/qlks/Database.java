@@ -117,7 +117,7 @@ public class Database extends SQLiteOpenHelper {
     // ------------------------ Phương Thức của bảng Phòng ----------------//
 
     //Tao 1 phòng
-    public long createPhong(Phong phong) {
+    public void createPhong(Phong phong) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -128,9 +128,8 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_TRANGTHAI,phong.getTrangThai());
 
         // insert row
-        long p = db.insert(TABLE_PHONG, null, values);
+        db.insert(TABLE_PHONG, null, values);
 
-        return p;
     }
     //Lay toan bo Phong
     public List<Phong> getAllPhong() {
@@ -156,6 +155,35 @@ public class Database extends SQLiteOpenHelper {
                 // adding to tags list
                 phongs.add(p);
             } while (c.moveToNext());
+        }
+        return phongs;
+    }
+    //get all by loai
+    public List<Phong> getAllbyLoai(String loai) {
+        List<Phong> phongs = new ArrayList<Phong>();
+        if (loai.equals("All")) {
+            phongs.addAll(getAllPhong());
+        }
+        else{
+            String selectQuery = "SELECT  * FROM " + TABLE_PHONG+" WHERE "+KEY_LOAIPHONG+" ='"+loai+"'";
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                do {
+                    Phong p;
+                    p = new Phong();
+                    p.setMaPhong(c.getInt((c.getColumnIndex(KEY_MAPHONG))));
+                    p.setLoaiPhong(c.getString(c.getColumnIndex(KEY_LOAIPHONG)));
+                    p.setMoTa(c.getString(c.getColumnIndex(KEY_MOTAPHONG)));
+                    p.setGia(c.getInt(c.getColumnIndex(KEY_GIAPHONG)));
+                    p.setTrangThai(c.getString(c.getColumnIndex(KEY_TRANGTHAI)));
+
+                    // adding to tags list
+                    phongs.add(p);
+                } while (c.moveToNext());
+            }
         }
         return phongs;
     }
@@ -258,7 +286,7 @@ public class Database extends SQLiteOpenHelper {
 
         return k;
     }
-    // ------------------------ Phương Thức của bảng Phòng ----------------//
+    // ------------------------ Phương Thức của bảng Nhan Vien ----------------//
 
     //Them 1 Nhan vien
     public long createNV(NhanVien nv) {

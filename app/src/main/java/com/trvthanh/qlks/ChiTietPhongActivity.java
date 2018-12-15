@@ -78,7 +78,9 @@ public class ChiTietPhongActivity extends Activity {
                 bt.setEnabled(false);
                 btnXoa.setEnabled(false);
                 btnLuu.setEnabled(true);
-                Toast.makeText(getApplicationContext(), intent.getIntExtra(QLPhongActivity.MAPHONG, 0) + "", Toast.LENGTH_LONG).show();
+               //
+                //
+                // Toast.makeText(getApplicationContext(), intent.getIntExtra(QLPhongActivity.MAPHONG, 0) + "", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -87,6 +89,7 @@ public class ChiTietPhongActivity extends Activity {
             public void onClick(View v) {
                 db.deletePhong(intent.getIntExtra(QLPhongActivity.MAPHONG, 0));
                 Toast.makeText(getApplicationContext(),"Deleted",Toast.LENGTH_LONG).show();
+                finish();
                 Intent intent1=new Intent(ChiTietPhongActivity.this,QLPhongActivity.class);
                 startActivity(intent1);
             }
@@ -100,9 +103,11 @@ public class ChiTietPhongActivity extends Activity {
                 Phong phong=new Phong(mp,spnLoaiPhong.getSelectedItem()+"",txtMoTa.getText()+"",gia,spnTrangThai.getSelectedItem()+"");
                 Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_LONG).show();
                 db.createPhong(phong);
+
+                finish();
+
                 Intent intent1=new Intent(ChiTietPhongActivity.this,QLPhongActivity.class);
                 startActivity(intent1);
-
             }
         });
     }
