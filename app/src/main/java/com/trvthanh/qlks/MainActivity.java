@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         btnCallActiNV = (Button) findViewById(R.id.btnNhanVien);
 
         db = new Database(getApplicationContext());
-        /*
+
         //Tao Phong ok cho maphong vs trangthai luon m
         Phong phong1 = new Phong(106, "1GĐơn", "Đây là mô tả Phòng 106", 200000, "Còn trống");
         Phong phong2 = new Phong(107, "1GĐôi", "Đây là mô tả Phòng 107", 300000, "Còn trống");
@@ -65,13 +65,13 @@ public class MainActivity extends Activity {
         db.createKhach(khach1);
         db.createKhach(khach2);
 
-        //tao Nhân viên
-        Date d1 = new Date(1990,1,12);
-        NhanVien nhanVien1 = new NhanVien(123, "Phạm Đức Tính", "566456545",d1, "123 đường abc", "0123456789", true);
-        Date d2 = new Date(1990,8,5);
-        NhanVien nhanVien2 = new NhanVien(132, "Nguyễn lê Thanh Tuấn", "963456545",d1, "456 đường abc", "09632561789", true);
+        //tao Nhân viên // bỏ coment cho này khi khỏi tao actimain sẽ tự them 2 nv vo dâtbase
+
+        NhanVien nhanVien1 = new NhanVien(123, "Phạm Đức Tính", "566456545","14/3/1990", "123 đường abc", "0123456789", "Nam");
+
+        NhanVien nhanVien2 = new NhanVien(132, "Nguyễn lê Thanh Tuấn", "963456545","11/11/1990", "456 đường abc", "09632561789", "Nu");
         db.createNV(nhanVien1);
-        db.createNV(nhanVien2);*/
+        db.createNV(nhanVien2);
         //Xử lí onClick cho các buttons
         btnCallActiPhong.setOnClickListener(new View.OnClickListener() {
             @Override

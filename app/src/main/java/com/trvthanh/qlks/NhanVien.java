@@ -3,15 +3,18 @@ package com.trvthanh.qlks;
 import java.util.Date;
 
 public class NhanVien {
-    int MaNV;
-    String TenNV;
-    String CMND;
-    Date NgaySinh;
-    String DiaChi;
-    String SDT;
-    Boolean GioiTinh;
+    public NhanVien(int maNV, String tenNV, String CMND, String ngaySinh, String diaChi, String SDT, String gioiTinh) {
+        MaNV = maNV;
+        TenNV = tenNV;
+        this.CMND = CMND;
+        NgaySinh = ngaySinh;
+        DiaChi = diaChi;
+        this.SDT = SDT;
+        GioiTinh = gioiTinh;
+    }
 
     public int getMaNV() {
+
         return MaNV;
     }
 
@@ -36,10 +39,10 @@ public class NhanVien {
     }
 
     public String getNgaySinh() {
-        return NgaySinh+"";
+        return NgaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         NgaySinh = ngaySinh;
     }
 
@@ -59,21 +62,26 @@ public class NhanVien {
         this.SDT = SDT;
     }
 
-    public Boolean getGioiTinh() {
+    public String getGioiTinh() {
         return GioiTinh;
     }
 
-    public void setGioiTinh(Boolean gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         GioiTinh = gioiTinh;
     }
 
-    public NhanVien(int maNV, String tenNV, String CMND, Date ngaySinh, String diaChi, String SDT, Boolean gioiTinh) {
-        MaNV = maNV;
-        TenNV = tenNV;
-        this.CMND = CMND;
-        NgaySinh = ngaySinh;
-        DiaChi = diaChi;
-        this.SDT = SDT;
-        GioiTinh = gioiTinh;
+    int MaNV;
+    String TenNV;
+    String CMND;
+    String NgaySinh;
+    String DiaChi;
+    String SDT;
+    String GioiTinh;
+    public NhanVien()
+    {}
+
+    @Override
+    public String toString() {
+        return getMaNV()+"";
     }
 }

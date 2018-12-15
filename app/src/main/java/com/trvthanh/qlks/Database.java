@@ -7,7 +7,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.webkit.WebHistoryItem;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,19 +75,19 @@ public class Database extends SQLiteOpenHelper {
             + " TEXT," + KEY_GIOITINHKH + " TEXT"+ " )";
 
     // Nhan Vien Table - column names
-    private static final String KEY_MaNV   = "MaNV";
-    private static final String KEY_TENNV = "TenNV";
-    private static final String KEY_CMNDNV = "CMNDNhanVien";
-    private static final String KEY_NGAYSINH = "NgaySinh";
-    private static final String KEY_DCNV = "DiaChiNV";
-    private static final String KEY_SDTNV = "SDTNV";
-    private static final String KEY_GIOITINHNV = "GioiTinhNV";
+    public static final String KEY_MaNV   = "MaNV";
+    public static final String KEY_TENNV = "TenNV";
+    public static final String KEY_CMNDNV = "CMNDNhanVien";
+    public static final String KEY_NGAYSINH = "NgaySinh";
+    public static final String KEY_DCNV = "DiaChiNV";
+    public static final String KEY_SDTNV = "SDTNV";
+    public static final String KEY_GIOITINHNV = "GioiTinhNV";
 
     // Nhan Vien table create statement
     private static final String CREATE_TABLE_NV = "CREATE TABLE "
             + TABLE_NV + " (" + KEY_MaNV + " INTEGER PRIMARY KEY," + KEY_TENNV
             + " TEXT," + KEY_CMNDNV + " TEXT," + KEY_NGAYSINH
-            + " DATE," + KEY_DCNV + " TEXT,"+ KEY_SDTNV + " TEXT,"+ KEY_GIOITINHNV + " BOOLEAN"+ " )";
+            + " TEXT," + KEY_DCNV + " TEXT,"+ KEY_SDTNV + " TEXT,"+ KEY_GIOITINHNV + " TEXT"+ " )";
 
     public Database(Context context) {
         super(context,DATABASE_NAME,null,1);
@@ -135,8 +138,6 @@ public class Database extends SQLiteOpenHelper {
     public List<Phong> getAllPhong() {
         List<Phong> phongs = new ArrayList<Phong>();
         String selectQuery = "SELECT  * FROM " + TABLE_PHONG;
-
-        Log.e(LOG, selectQuery);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -288,7 +289,7 @@ public class Database extends SQLiteOpenHelper {
     }
     // ------------------------ Phương Thức của bảng Nhan Vien ----------------//
 
-    //Them 1 Nhan vien
+    //Them 1 Nhan vien///hàm này them 1 nhan vien ne
     public long createNV(NhanVien nv) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -303,9 +304,49 @@ public class Database extends SQLiteOpenHelper {
 
 
         // insert row
-        long nv1 = db.insert(TABLE_PHONG, null, values);
+        long nv1 = db.insert(TABLE_NV, null, values);
 
         return nv1;
     }
+    //ham sua nhan vien trong bang
+    public long suaNV(NhanVien nv){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_MaNV,nv.getMaNV() );
+        values.put(KEY_TENNV, nv.getTenNV());
+        values.put(KEY_CMNDNV,nv.getCMND() );
+        values.put(KEY_NGAYSINH,nv.getNgaySinh());
+        values.put(KEY_DCNV,nv.getDiaChi());
+        values.put(KEY_SDTNV,nv.getSDT());
+        values.put(KEY_GIOITINHNV,nv.getGioiTinh());
 
+        return db.update(TABLE_NV,values,KEY_MaNV + " = " + nv.getMaNV(),null);
+    }
+    //Ham xoa nhan vien trong bang
+    public long xoaNV(int maNV){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NV,KEY_MaNV +" = " +maNV,null);
+    }
+    //Ham lay ra toan bo nhan vien trong bang
+    public ArrayList<NhanVien> getalldata(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NV+" ;",null);
+        ArrayList<NhanVien> ar = new ArrayList<>();
+
+        if(c.moveToFirst()){
+            do {
+                NhanVien nv = new NhanVien();
+                nv.setMaNV(c.getInt(c.getColumnIndex(KEY_MaNV)));
+                nv.setTenNV(c.getString(c.getColumnIndex(KEY_TENNV)));
+                nv.setCMND(c.getString(c.getColumnIndex(KEY_CMNDNV)));
+                nv.setNgaySinh(c.getString(c.getColumnIndex(KEY_NGAYSINH)));
+                nv.setDiaChi(c.getString(c.getColumnIndex(KEY_DCNV)));
+                nv.setSDT(c.getString(c.getColumnIndex(KEY_SDTNV)));
+                nv.setGioiTinh(c.getString(c.getColumnIndex(KEY_GIOITINHNV)));
+
+                ar.add(nv);
+            }while(c.moveToNext());
+        }
+        return ar;
+    }
 }

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ThemNV">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        >
+
+        <TextView
+            android:id="@+id/tvthemManv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MaNV"
+            android:textSize="23dp"/>
+
+        <EditText
+            android:id="@+id/edthemMaNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="nhap MaNV" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvthemTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TenNV"
+            android:textSize="23dp"/>
+
+        <EditText
+            android:id="@+id/edthemTenNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="nhap TenNV" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvthemCMND"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CMND"
+            android:textSize="23dp"/>
+
+        <EditText
+            android:id="@+id/edthemCMND"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="nhap CMND" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvthemNS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NgaySinh"
+            android:textSize="23dp"/>
+
+        <EditText
+            android:id="@+id/edthemNS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="dd/MMMM/yyyy" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvthemDC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dia Chi"
+            android:textSize="23dp"/>
+
+        <EditText
+            android:id="@+id/edthemDC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="nhap DC" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvthemSDT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SDT"
+            android:textSize="23dp"/>
+
+        <EditText
+            android:id="@+id/edthemSDT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="nhap SDT" />
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvthemGT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gioi Tinh"
+            android:textSize="23dp"/>
+
+        <EditText
+            android:id="@+id/edthemGT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="nhap GT" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/btnThemNVMOI"
+        android:layout_height="50dp"
+        android:text="Thêm"
+        />
+
+</TableLayout>
