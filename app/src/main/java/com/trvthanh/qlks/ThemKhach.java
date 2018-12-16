@@ -50,7 +50,13 @@ public class ThemKhach extends AppCompatActivity {
                 db.createKhach(khach);
                 Intent intent=new Intent(ThemKhach.this,QLKhachActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(ThemKhach.this, QLKhachActivity.class);
+        startActivity(intent);
+        finish();}
 }

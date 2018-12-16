@@ -43,6 +43,7 @@ public class QLDVActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(QLDVActivity.this, ThemDichVuActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -62,8 +63,13 @@ public class QLDVActivity extends Activity {
                 Intent intent = new Intent(QLDVActivity.this,chitietdv.class);
                 intent.putExtra("DichVu",dv);
                 startActivity(intent);
+                finish();
             }
         });
     }
-
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(QLDVActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();}
 }

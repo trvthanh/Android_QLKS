@@ -46,6 +46,7 @@ public class QLPhongActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(QLPhongActivity.this, ThemPhong.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -67,6 +68,9 @@ public class QLPhongActivity extends Activity {
                 // your code here
             }
 
+
+
+
         });
 
         listPhong.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,11 +81,18 @@ public class QLPhongActivity extends Activity {
                 intent.putExtra(MAPHONG, allPhong.get(position).getMaPhong());     //int
                 intent.putExtra(LOAIPHONG, allPhong.get(position).getLoaiPhong()); //string
                 intent.putExtra(MOTA, allPhong.get(position).getMoTa());           //string
-                intent.putExtra(GIA, allPhong.get(position).getGia());             //int---ko lay dc mo ta 102 ne
+                intent.putExtra(GIA, allPhong.get(position).getGia());             //int
                 intent.putExtra(TRANGTHAI, allPhong.get(position).getTrangThai()); //string
                 startActivity(intent);
+                finish();
             }
         });
 
     }
+
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(QLPhongActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();}
 }

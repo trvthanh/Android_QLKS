@@ -71,4 +71,9 @@ public class ChiTietKhach extends AppCompatActivity {
         }
         return true;
     }
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(ChiTietKhach.this, QLKhachActivity.class);
+        startActivity(intent);
+        finish();}
 }

@@ -15,14 +15,7 @@
 
         />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textColor="@color/colorPrimary"
-        android:text="Danh sách Nhân viên" />
+
     <Button
         android:id="@+id/btnThemNV"
         android:layout_width="match_parent"

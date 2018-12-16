@@ -1,8 +1,10 @@
 package com.trvthanh.qlks;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -87,11 +89,7 @@ public class ChiTietPhongActivity extends Activity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.deletePhong(intent.getIntExtra(QLPhongActivity.MAPHONG, 0));
-                Toast.makeText(getApplicationContext(),"Deleted",Toast.LENGTH_LONG).show();
-                finish();
-                Intent intent1=new Intent(ChiTietPhongActivity.this,QLPhongActivity.class);
-                startActivity(intent1);
+               dialogXoaPhong();
             }
         });
         btnLuu.setOnClickListener(new View.OnClickListener() {
@@ -110,5 +108,33 @@ public class ChiTietPhongActivity extends Activity {
                 startActivity(intent1);
             }
         });
+    }
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(ChiTietPhongActivity.this, QLPhongActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    private void dialogXoaPhong() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Xóa Phòng");
+        builder.setMessage("Bạn muốn xóa phòng "+txtMaPhong.getText()+" ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int mp=Integer.parseInt(txtMaPhong.getText().toString());
+                db.deletePhong(mp);
+                Intent intent=new Intent(ChiTietPhongActivity.this,QLPhongActivity.class);
+                startActivity(intent);
+                Toast.makeText(ChiTietPhongActivity.this, "Đã Xóa !", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
     }
 }

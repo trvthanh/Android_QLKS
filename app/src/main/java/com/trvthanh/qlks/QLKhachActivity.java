@@ -53,6 +53,7 @@ public class QLKhachActivity extends Activity {
                 intent.putExtra(SDTKH, Laykhach.get(position).getSDT());
                 intent.putExtra(GIOITINHKH, Laykhach.get(position).getGioiTinh());
                 startActivity(intent);
+                finish();
             }
         });
         //button them
@@ -65,4 +66,9 @@ public class QLKhachActivity extends Activity {
             }
         });
     }
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(QLKhachActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();}
 }

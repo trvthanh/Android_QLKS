@@ -122,4 +122,9 @@ public class chitietdv extends AppCompatActivity {
         });
         builder.show();
     }
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(chitietdv.this, QLDVActivity.class);
+        startActivity(intent);
+        finish();}
 }

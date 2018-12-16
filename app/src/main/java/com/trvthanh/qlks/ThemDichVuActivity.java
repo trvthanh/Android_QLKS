@@ -48,7 +48,13 @@ public class ThemDichVuActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),QLDVActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(ThemDichVuActivity.this, QLDVActivity.class);
+        startActivity(intent);
+        finish();}
 }

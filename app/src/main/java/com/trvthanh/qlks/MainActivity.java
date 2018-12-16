@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
     private Button btnCallActiKhach;
     private Button btnCallActiNV;
 
-    Database db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,42 +42,14 @@ public class MainActivity extends Activity {
         btnCallActiKhach = (Button) findViewById(R.id.btnKhach);
         btnCallActiNV = (Button) findViewById(R.id.btnNhanVien);
 
-        db = new Database(getApplicationContext());
 
-        /*//Tao Phong ok cho maphong vs trangthai luon m
-        Phong phong1 = new Phong(106, "1GĐơn", "Đây là mô tả Phòng 106", 200000, "Còn trống");
-        Phong phong2 = new Phong(107, "1GĐôi", "Đây là mô tả Phòng 107", 300000, "Còn trống");
-
-        //Them Phong vao bang
-        db.createPhong(phong1);
-        db.createPhong(phong2);
-
-        //Tao Dich vu
-        DichVu dichVu1 = new DichVu(1, "Ăn Sáng", "Đây là mô tả dv ăn sáng", "Bữa", 50000);
-        DichVu dichVu2 = new DichVu(2, "Ăn Trưa", "Đây là mô tả dv ăn trưa", "Bữa", 60000);
-
-        db.createDV(dichVu1);
-        db.createDV(dichVu2);
-
-        //Tao Khach Hàng
-        Khach khach1 = new Khach("123456789", "Phạm Đức Tính", "123 đường abc", "0963123621", "Nam");
-        Khach khach2 = new Khach("095265489", "Nguyễn Lê Thanh Tuấn", "456 đường xyz", "05665561", "Nam");
-        db.createKhach(khach1);
-        db.createKhach(khach2);
-
-        //tao Nhân viên // bỏ coment cho này khi khỏi tao actimain sẽ tự them 2 nv vo dâtbase
-
-        NhanVien nhanVien1 = new NhanVien(123, "Phạm Đức Tính", "566456545","14/3/1990", "123 đường abc", "0123456789", "Nam");
-
-        NhanVien nhanVien2 = new NhanVien(132, "Nguyễn lê Thanh Tuấn", "963456545","11/11/1990", "456 đường abc", "09632561789", "Nu");
-        db.createNV(nhanVien1);
-        db.createNV(nhanVien2);*/
         //Xử lí onClick cho các buttons
         btnCallActiPhong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QLPhongActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btnCallActiDV.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +57,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QLDVActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btnCallActiKhach.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +65,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QLKhachActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btnCallActiNV.setOnClickListener(new View.OnClickListener() {
@@ -104,11 +78,7 @@ public class MainActivity extends Activity {
         });
 
     }
-    public Date stringToDate(String[] args,String s)throws Exception
-    {
-        Date d1=new SimpleDateFormat("dd/MM/yyyy").parse(s);
-        return d1;
-    }
+
 
 }
 

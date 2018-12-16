@@ -190,22 +190,7 @@ public class Database extends SQLiteOpenHelper {
         return phongs;
     }
 
-     //Cap nhat phong
 
-    public int updatePhong(Phong phong) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-       // values.put(KEY_MAPHONG, phong.getMaPhong());
-        values.put(KEY_LOAIPHONG, phong.getLoaiPhong());
-        values.put(KEY_MOTAPHONG, phong.getMoTa());
-        values.put(KEY_GIAPHONG, phong.getGia());
-        values.put(KEY_TRANGTHAI, phong.getTrangThai());
-
-        // updating row
-        return db.update(TABLE_PHONG, values, KEY_MAPHONG + " = ?",
-                new String[] { String.valueOf(phong.getMaPhong()) });
-    }
 
     //Xoa 1 phong
     public void deletePhong(int mp) {

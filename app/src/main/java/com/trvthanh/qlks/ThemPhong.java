@@ -43,9 +43,6 @@ public class ThemPhong extends Activity {
             @Override
             public void onClick(View v) {
 
-
-
-
                 int mp=Integer.parseInt(txtMaPhong.getText().toString());
                 String lp=(String)cbxLoaiPhong.getSelectedItem();
                 String tt=(String)cbxTrangThai.getSelectedItem();
@@ -69,8 +66,14 @@ public class ThemPhong extends Activity {
                 Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(ThemPhong.this,QLPhongActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
     }
+    @Override
+    public void onBackPressed()
+    {Intent intent = new Intent(ThemPhong.this, QLPhongActivity.class);
+        startActivity(intent);
+        finish();}
 }
