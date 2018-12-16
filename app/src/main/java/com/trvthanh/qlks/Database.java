@@ -273,6 +273,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return dichVus;
     }
+    // xoa 1 dich vu
     public void deleteDichVu(int maDv) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_DV, KEY_MADV + " = ?",

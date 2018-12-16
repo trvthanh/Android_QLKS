@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,8 +21,10 @@ public class chitietdv extends AppCompatActivity {
     private EditText txtmota;
     private Spinner cbxdvt;
     private EditText txtGia1;
-    private Button btnxoa;
-    private Button btnsua;
+    private Button btnxoa,btnsua;
+    private Button btnluu;
+
+
     private List<String> listDichVu;
     Database db;
 
@@ -37,29 +39,66 @@ public class chitietdv extends AppCompatActivity {
         txtGia1=findViewById(R.id.txtgia);
         btnxoa=findViewById(R.id.btnxoa);
         btnsua = findViewById(R.id.btnsua);
+        btnluu = findViewById(R.id.btnluu);
 
-        Intent intent = getIntent();
-        DichVu dv = (DichVu) intent.getSerializableExtra("DichVu");
+        final Intent intent = getIntent();
+        final DichVu dv = (DichVu) intent.getSerializableExtra("DichVu");
 
         txtmadv.setText(dv.getMaDV()+"");
+        txtmadv.setEnabled(false);
         txttendv.setText(dv.getTenDV());
+        txttendv.setEnabled(false);
         txtmota.setText(dv.getMoTaDV());
+        txtmota.setEnabled(false);
         txtGia1.setText(dv.getGia()+"");
+        txtGia1.setEnabled(false);
 
         listDichVu=new ArrayList<String >();
         listDichVu=Arrays.asList(getResources().getStringArray(R.array.DVT));
         int position1 = listDichVu.indexOf(dv.getDVT());
         cbxdvt.setSelection(position1);
+        cbxdvt.setEnabled(false);
 
         db = new Database(getApplicationContext());
         btnxoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 suKienXoaDichVu();
+
+            }
+        });
+
+        btnsua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtmadv.setEnabled(true);
+                txttendv.setEnabled(true);
+                txtmota.setEnabled(true);
+                cbxdvt.setEnabled(true);
+                txtGia1.setEnabled(true);
+                btnluu.setEnabled(true);
+                btnsua.setEnabled(false);
+                btnxoa.setEnabled(false);
+            }
+        });
+        btnluu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.deleteDichVu(dv.getMaDV());
+                int madv = Integer.parseInt(txtmadv.getText().toString());
+                int gia = Integer.parseInt(txtGia1.getText().toString());
+                DichVu dichVu = new DichVu(madv, txttendv.getText()+"",txtmota.getText()+"",cbxdvt.getSelectedItem()+"",gia);
+                Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
+                db.createDV(dichVu);
+                finish();
+
+                Intent intent1 = new Intent(chitietdv.this,QLDVActivity.class);
+                startActivity(intent1);
             }
         });
 
     }
+
 
     private void suKienXoaDichVu() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -70,8 +109,10 @@ public class chitietdv extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 int madv=Integer.parseInt(txtmadv.getText().toString());
                 db.deleteDichVu(madv);
+                Intent intent1 = new Intent(chitietdv.this, QLDVActivity.class);
+                startActivity(intent1);
                 finish();
-                Toast.makeText(chitietdv.this, "xóa thành công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(chitietdv.this,txtmadv.getText().toString() , Toast.LENGTH_SHORT).show();
             }
         }).setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override

@@ -25,13 +25,6 @@
             android:layout_height="wrap_content"
             android:text="Thêm dịch vụ" />
 
-        <Button
-            android:id="@+id/btnsuadv"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Sửa dịch vụ" />
-
     </LinearLayout>
 
     <ListView

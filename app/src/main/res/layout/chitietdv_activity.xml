@@ -125,6 +125,13 @@
             android:text="Sửa" />
 
         <Button
+            android:id="@+id/btnluu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lưu" />
+
+        <Button
             android:id="@+id/btnxoa"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
