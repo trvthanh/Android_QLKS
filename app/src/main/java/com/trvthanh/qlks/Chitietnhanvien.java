@@ -9,16 +9,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Chitietnhanvien extends AppCompatActivity {
     EditText edsuaMaNV, edsuaTenNV,edsuaCMND,edsuaNS,edsuaDC,edSDT,edGT;
     Button btnsua,btnXoa,btnCapnhat;
     Database db;
+    private ArrayList<NhanVien> allNV=new ArrayList<NhanVien>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.chitietnhanvien_layout);
-
-        final Intent intent =getIntent();
+        db = new Database(getApplicationContext());
+        final Intent intent = getIntent();
         edsuaMaNV = (EditText) findViewById(R.id.edsuaMaNV);
 
         edsuaTenNV = (EditText)findViewById(R.id.edsuaTenNV);
@@ -32,6 +35,9 @@ public class Chitietnhanvien extends AppCompatActivity {
         edSDT = (EditText)findViewById(R.id.edsuaSDT);
 
         edGT = (EditText)findViewById(R.id.edsuaGT);
+        btnCapnhat = findViewById(R.id.btnCapnhatNV);
+        btnsua = findViewById(R.id.btnSuaNV);
+        btnXoa = findViewById(R.id.btnXoaNV);
 
         Toast.makeText(getApplicationContext(),intent.getStringExtra(QLNVActivity.TENNV),Toast.LENGTH_LONG).show();
         edsuaMaNV.setText(intent.getIntExtra(QLNVActivity.MANV,0)+"");
@@ -49,5 +55,63 @@ public class Chitietnhanvien extends AppCompatActivity {
         edGT.setText(intent.getStringExtra(QLNVActivity.GIOITINH));
         edGT.setEnabled(false);
 
+        btnCapnhat.setEnabled(false);
+
+        btnsua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edsuaMaNV.setEnabled(true);
+                edsuaTenNV.setEnabled(true);
+                edsuaCMND.setEnabled(true);
+                edsuaNS.setEnabled(true);
+                edsuaDC.setEnabled(true);
+                edSDT.setEnabled(true);
+                edGT.setEnabled(true);
+                btnsua.setEnabled(false);
+                btnCapnhat.setEnabled(true);
+                btnXoa.setEnabled(false);
+            }
+        });
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               db.deleteNV(Integer.parseInt(edsuaMaNV.getText().toString()));
+                Toast.makeText(getApplicationContext(),"deleted",Toast.LENGTH_LONG).show();
+                finish();
+                Intent intent1 = new Intent(Chitietnhanvien.this,QLNVActivity.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
+        btnCapnhat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.deleteNV(intent.getIntExtra(QLNVActivity.MANV,0));
+                int manv=Integer.parseInt(edsuaMaNV.getText().toString());
+                String tennv=edsuaTenNV.getText().toString();
+                String cmnd=edsuaCMND.getText().toString();
+                String ns=edsuaNS.getText().toString();
+                String dc=edsuaDC.getText().toString();
+                String sdt=edSDT.getText().toString();
+                String gt=edGT.getText().toString();
+
+                NhanVien nv = new NhanVien(manv,tennv,cmnd,ns,dc,sdt,gt);
+                db.createNV(nv);
+                Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_LONG).show();
+                db.createNV(nv);
+                finish();
+                Intent intent1=new Intent(Chitietnhanvien.this,QLNVActivity.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
+    }
+    @Override
+    public  void onBackPressed()
+    {
+        Intent intent = new Intent(Chitietnhanvien.this,QLNVActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

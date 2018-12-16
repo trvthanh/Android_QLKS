@@ -10,11 +10,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class ThemNV extends AppCompatActivity {
     Database db;
     TextView tvthemMaNV,tvthemTenNV;
     EditText etthemManv,etthemTennv,etthemcmnd,etthemNS,etthemDC,etthemSDT,etthemGT;
     Button btnthemNV;
+    private ArrayList<NhanVien> allNV=new ArrayList<NhanVien>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +38,23 @@ public class ThemNV extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int manv=Integer.parseInt(etthemManv.getText().toString());
-                String tennv=etthemManv.getText().toString();
+                String tennv=etthemTennv.getText().toString();
                 String cmnd=etthemcmnd.getText().toString();
                 String ns=etthemNS.getText().toString();
                 String dc=etthemDC.getText().toString();
                 String sdt=etthemSDT.getText().toString();
                 String gt=etthemGT.getText().toString();
+                allNV = new ArrayList<NhanVien>();
+                allNV.addAll(db.getalldata());
+
+                for (int i=0;i<allNV.size();i++)
+                {
+                    if(manv==allNV.get(i).getMaNV())
+                    {
+                        Toast.makeText(getApplicationContext(),"Đã tồn tại!",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                }
                 NhanVien nv = new NhanVien(manv,tennv,cmnd,ns,dc,sdt,gt);
                 db.createNV(nv);
                 Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
@@ -48,5 +62,12 @@ public class ThemNV extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public  void onBackPressed()
+    {
+        Intent intent = new Intent(ThemNV.this,QLNVActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

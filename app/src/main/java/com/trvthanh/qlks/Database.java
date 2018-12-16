@@ -3,6 +3,7 @@ package com.trvthanh.qlks;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -334,32 +335,33 @@ public class Database extends SQLiteOpenHelper {
         values.put(KEY_DCNV,nv.getDiaChi());
         values.put(KEY_SDTNV,nv.getSDT());
         values.put(KEY_GIOITINHNV,nv.getGioiTinh());
-
-
         // insert row
         long nv1 = db.insert(TABLE_NV, null, values);
-
         return nv1;
     }
     //ham sua nhan vien trong bang
-    public long suaNV(NhanVien nv){
+    public int updateNV(NhanVien nv) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_MaNV,nv.getMaNV() );
-        values.put(KEY_TENNV, nv.getTenNV());
-        values.put(KEY_CMNDNV,nv.getCMND() );
-        values.put(KEY_NGAYSINH,nv.getNgaySinh());
-        values.put(KEY_DCNV,nv.getDiaChi());
-        values.put(KEY_SDTNV,nv.getSDT());
-        values.put(KEY_GIOITINHNV,nv.getGioiTinh());
 
-        return db.update(TABLE_NV,values,KEY_MaNV + " = " + nv.getMaNV(),null);
+        ContentValues values = new ContentValues();
+        values.put(KEY_MaNV, nv.getMaNV());
+        values.put(KEY_TENNV, nv.getTenNV());
+        values.put(KEY_CMNDNV, nv.getCMND());
+        values.put(KEY_NGAYSINH, nv.getNgaySinh());
+        values.put(KEY_DCNV, nv.getDiaChi());
+        values.put(KEY_SDTNV, nv.getSDT());
+        values.put(KEY_GIOITINHNV, nv.getGioiTinh());
+        // updating row
+        return db.update(TABLE_NV, values, KEY_MaNV + " = ?",
+                new String[] { String.valueOf(nv.getMaNV()) });
     }
     //Ham xoa nhan vien trong bang
-    public long xoaNV(int maNV){
+    public void deleteNV(int maNV) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NV,KEY_MaNV +" = " +maNV,null);
+        db.delete(TABLE_NV, KEY_MaNV + " = ?",new String[] { String.valueOf(maNV)});
+        db.close();
     }
+
     //Ham lay ra toan bo nhan vien trong bang
     public ArrayList<NhanVien> getalldata(){
         SQLiteDatabase db = this.getWritableDatabase();

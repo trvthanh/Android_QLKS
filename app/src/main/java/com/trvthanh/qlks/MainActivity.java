@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
 
         db = new Database(getApplicationContext());
 
-        //Tao Phong ok cho maphong vs trangthai luon m
+        /*//Tao Phong ok cho maphong vs trangthai luon m
         Phong phong1 = new Phong(106, "1GĐơn", "Đây là mô tả Phòng 106", 200000, "Còn trống");
         Phong phong2 = new Phong(107, "1GĐôi", "Đây là mô tả Phòng 107", 300000, "Còn trống");
 
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
 
         NhanVien nhanVien2 = new NhanVien(132, "Nguyễn lê Thanh Tuấn", "963456545","11/11/1990", "456 đường abc", "09632561789", "Nu");
         db.createNV(nhanVien1);
-        db.createNV(nhanVien2);
+        db.createNV(nhanVien2);*/
         //Xử lí onClick cho các buttons
         btnCallActiPhong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +99,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QLNVActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

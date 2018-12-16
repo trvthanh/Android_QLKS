@@ -39,15 +39,16 @@ public class QLNVActivity extends Activity {
         setContentView(R.layout.qlnv_layout);
             db= new Database(getApplicationContext());
 
+        listnv = findViewById(R.id.lvnhanvien);
         allNV=new ArrayList<NhanVien>();
-
         allNV.addAll(db.getalldata());
+        arrayAdapter=new NhanvienAdapter(this,R.layout.item_layoutlistview,allNV);
+        listnv.setAdapter(arrayAdapter);
 
-       listnv = findViewById(R.id.lvnhanvien);
+
        btnthem = findViewById(R.id.btnThemNV);
         // arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, allPhong);
-        arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,allNV);
-        listnv.setAdapter(arrayAdapter);
+
         listnv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -61,6 +62,7 @@ public class QLNVActivity extends Activity {
                 intent.putExtra(SDTNV, allNV.get(position).getSDT());
                 intent.putExtra(GIOITINH, allNV.get(position).getGioiTinh());
                 startActivity(intent);
+                finish();
             }
         });
         btnthem.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +70,15 @@ public class QLNVActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(QLNVActivity.this,ThemNV.class);
                 startActivity(intent);
+                finish();
             }
         });
+    }
+    @Override
+    public  void onBackPressed()
+    {
+        Intent intent = new Intent(QLNVActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
