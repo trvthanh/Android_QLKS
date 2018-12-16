@@ -99,7 +99,7 @@ public class ChiTietPhongActivity extends Activity {
                 int mp=Integer.parseInt(txtMaPhong.getText().toString());
                 int gia=Integer.parseInt(txtGia.getText().toString());
                 Phong phong=new Phong(mp,spnLoaiPhong.getSelectedItem()+"",txtMoTa.getText()+"",gia,spnTrangThai.getSelectedItem()+"");
-                Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Đã sửa !",Toast.LENGTH_LONG).show();
                 db.createPhong(phong);
 
                 finish();
@@ -119,7 +119,7 @@ public class ChiTietPhongActivity extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Xóa Phòng");
         builder.setMessage("Bạn muốn xóa phòng "+txtMaPhong.getText()+" ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int mp=Integer.parseInt(txtMaPhong.getText().toString());
@@ -129,7 +129,7 @@ public class ChiTietPhongActivity extends Activity {
                 Toast.makeText(ChiTietPhongActivity.this, "Đã Xóa !", Toast.LENGTH_SHORT).show();
                 finish();
             }
-        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+        }).setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

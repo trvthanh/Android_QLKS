@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ThemPhong">
+    <TextView
+        android:id="@+id/txtPhong"
+        style="@style/header"
+        android:text="THÊM PHÒNG"
+        android:layout_gravity="center"
+
+        />
     <TableRow
        android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -88,7 +88,7 @@ public class chitietdv extends AppCompatActivity {
                 int madv = Integer.parseInt(txtmadv.getText().toString());
                 int gia = Integer.parseInt(txtGia1.getText().toString());
                 DichVu dichVu = new DichVu(madv, txttendv.getText()+"",txtmota.getText()+"",cbxdvt.getSelectedItem()+"",gia);
-                Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Đã sửa !", Toast.LENGTH_SHORT).show();
                 db.createDV(dichVu);
                 finish();
 
@@ -112,7 +112,7 @@ public class chitietdv extends AppCompatActivity {
                 Intent intent1 = new Intent(chitietdv.this, QLDVActivity.class);
                 startActivity(intent1);
                 finish();
-                Toast.makeText(chitietdv.this,txtmadv.getText().toString() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(chitietdv.this,"Đã Xóa !" , Toast.LENGTH_SHORT).show();
             }
         }).setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override

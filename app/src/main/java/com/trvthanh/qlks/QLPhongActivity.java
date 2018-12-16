@@ -16,6 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+//Mo lai title bar
+//public class QLPhongActivity extends AppCompatActivity {
 public class QLPhongActivity extends Activity {
     private Spinner spnLoaiPhong;
     private Button btnThemPhong;

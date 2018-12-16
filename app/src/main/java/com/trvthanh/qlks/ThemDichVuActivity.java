@@ -45,7 +45,7 @@ public class ThemDichVuActivity extends AppCompatActivity {
                 //them vao database
                 DichVu dichVu =new DichVu(madv,tendv,mota,dvt,gia);
                 db.createDV(dichVu);
-                Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Đã thêm !",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),QLDVActivity.class);
                 startActivity(intent);
                 finish();

@@ -63,7 +63,7 @@ public class ThemPhong extends Activity {
 
                Phong phong=new Phong(mp,lp,mt,g,tt);
                db.createPhong(phong);
-                Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Đã thêm !",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(ThemPhong.this,QLPhongActivity.class);
                 startActivity(intent);
                 finish();

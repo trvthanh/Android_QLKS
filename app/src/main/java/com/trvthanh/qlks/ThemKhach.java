@@ -48,6 +48,7 @@ public class ThemKhach extends AppCompatActivity {
 
                 Khach khach=new Khach(cmnd,hoten,diachi,sdt,gioitinh);
                 db.createKhach(khach);
+                Toast.makeText(getApplicationContext(),"Thêm thành công !",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(ThemKhach.this,QLKhachActivity.class);
                 startActivity(intent);
                 finish();

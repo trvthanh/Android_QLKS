@@ -39,7 +39,7 @@ public class Chitietnhanvien extends AppCompatActivity {
         btnsua = findViewById(R.id.btnSuaNV);
         btnXoa = findViewById(R.id.btnXoaNV);
 
-        Toast.makeText(getApplicationContext(),intent.getStringExtra(QLNVActivity.TENNV),Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(),intent.getStringExtra(QLNVActivity.TENNV),Toast.LENGTH_LONG).show();
         edsuaMaNV.setText(intent.getIntExtra(QLNVActivity.MANV,0)+"");
         edsuaMaNV.setEnabled(false);
         edsuaTenNV.setText(intent.getStringExtra(QLNVActivity.TENNV));
@@ -77,7 +77,7 @@ public class Chitietnhanvien extends AppCompatActivity {
             public void onClick(View v) {
 
                db.deleteNV(Integer.parseInt(edsuaMaNV.getText().toString()));
-                Toast.makeText(getApplicationContext(),"deleted",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Đã xóa !",Toast.LENGTH_LONG).show();
                 finish();
                 Intent intent1 = new Intent(Chitietnhanvien.this,QLNVActivity.class);
                 startActivity(intent1);
@@ -98,7 +98,7 @@ public class Chitietnhanvien extends AppCompatActivity {
 
                 NhanVien nv = new NhanVien(manv,tennv,cmnd,ns,dc,sdt,gt);
                 db.createNV(nv);
-                Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Đã sửa !",Toast.LENGTH_LONG).show();
                 db.createNV(nv);
                 finish();
                 Intent intent1=new Intent(Chitietnhanvien.this,QLNVActivity.class);

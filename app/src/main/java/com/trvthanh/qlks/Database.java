@@ -127,7 +127,7 @@ public class Database extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_MAPHONG, phong.getMaPhong());
         values.put(KEY_LOAIPHONG, phong.getLoaiPhong());
-        values.put(KEY_MOTAPHONG, phong.getMaPhong());
+        values.put(KEY_MOTAPHONG, phong.getMoTa());
         values.put(KEY_GIAPHONG, phong.getGia());
         values.put(KEY_TRANGTHAI,phong.getTrangThai());
 

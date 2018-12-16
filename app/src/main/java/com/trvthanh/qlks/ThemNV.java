@@ -57,7 +57,7 @@ public class ThemNV extends AppCompatActivity {
                 }
                 NhanVien nv = new NhanVien(manv,tennv,cmnd,ns,dc,sdt,gt);
                 db.createNV(nv);
-                Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Đã thêm !",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(ThemNV.this,QLNVActivity.class);
                 startActivity(intent);
             }
