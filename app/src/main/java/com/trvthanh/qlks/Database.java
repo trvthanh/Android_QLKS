@@ -321,6 +321,13 @@ public class Database extends SQLiteOpenHelper {
 
         return k;
     }
+    //xoa khach
+    public void XoaKhach(String k)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.delete(TABLE_KHACH, KEY_CMNDKH + " = ?", new String[] { String.valueOf(k) });
+        db.close();
+    }
     // ------------------------ Phương Thức của bảng Nhan Vien ----------------//
 
     //Them 1 Nhan vien///hàm này them 1 nhan vien ne

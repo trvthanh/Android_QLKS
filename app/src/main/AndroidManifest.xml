@@ -25,7 +25,8 @@
         <activity android:name=".chitietdv" />
         <activity android:name=".ThemPhong" />
         <activity android:name=".ThemDichVuActivity" />
-        <activity android:name=".ChiTietKhach"></activity>
+        <activity android:name=".ChiTietKhach" />
+        <activity android:name=".ThemKhach"></activity>
     </application>
 
 </manifest>

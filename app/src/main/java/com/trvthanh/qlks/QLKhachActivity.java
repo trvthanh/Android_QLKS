@@ -18,6 +18,7 @@ public class QLKhachActivity extends Activity {
     Database db;
     private ListView lv;
     private ArrayAdapter<Khach> Adapter;
+    private Button Buttonthem;
 
     public static final String CMNDKH   = "CMNDKhachHang";
     public static final String TENKH = "TenKH";
@@ -34,12 +35,12 @@ public class QLKhachActivity extends Activity {
         //lay tat ca khach
 
         db=new Database(getApplicationContext());
-        Laykhach=new ArrayList<>();
+        Laykhach=new ArrayList<Khach>();
         Laykhach.addAll(db.LayKhach());
         lv=(ListView)findViewById(R.id.listview1);
         Adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Laykhach);
         lv.setAdapter(Adapter);
-        Toast.makeText(getApplicationContext(),Laykhach.size()+"",Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),Laykhach.size()+"",Toast.LENGTH_LONG).show();
 
         //truyen du lieu vao CMNDKH, TENKH....
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,6 +52,15 @@ public class QLKhachActivity extends Activity {
                 intent.putExtra(DCKH, Laykhach.get(position).getDiaChi());
                 intent.putExtra(SDTKH, Laykhach.get(position).getSDT());
                 intent.putExtra(GIOITINHKH, Laykhach.get(position).getGioiTinh());
+                startActivity(intent);
+            }
+        });
+        //button them
+        Buttonthem=(Button)findViewById(R.id.buttonthem);
+        Buttonthem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(QLKhachActivity.this,ThemKhach.class);
                 startActivity(intent);
             }
         });
