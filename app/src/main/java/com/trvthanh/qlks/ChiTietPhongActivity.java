@@ -26,6 +26,7 @@ public class ChiTietPhongActivity extends Activity {
     private Spinner spnLoaiPhong,spnTrangThai;
     private Button bt,btnLuu,btnXoa;
     private List<String> listLoaiPhong,listTrangThai;
+    private ArrayList<Phong> allPhong=new ArrayList<Phong>();
     Database db;
 
     @Override
@@ -95,17 +96,45 @@ public class ChiTietPhongActivity extends Activity {
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.deletePhong(intent.getIntExtra(QLPhongActivity.MAPHONG, 0));
-                int mp=Integer.parseInt(txtMaPhong.getText().toString());
-                int gia=Integer.parseInt(txtGia.getText().toString());
-                Phong phong=new Phong(mp,spnLoaiPhong.getSelectedItem()+"",txtMoTa.getText()+"",gia,spnTrangThai.getSelectedItem()+"");
-                Toast.makeText(getApplicationContext(),"Đã sửa !",Toast.LENGTH_LONG).show();
-                db.createPhong(phong);
+                allPhong = new ArrayList<Phong>();
+                allPhong.addAll(db.getAllPhong());
 
-                finish();
-
-                Intent intent1=new Intent(ChiTietPhongActivity.this,QLPhongActivity.class);
-                startActivity(intent1);
+                int flag=0;
+                String m=txtMaPhong.getText().toString();
+                for (int i=0;i<allPhong.size();i++)
+                {
+                    if(m.equals(allPhong.get(i).getMaPhong()+""))
+                    {
+                        Toast.makeText(getApplicationContext(),"Mã phòng đã tồn tại!",Toast.LENGTH_LONG).show();
+                        flag=1;
+                    }
+                }
+                if("".equals(txtMaPhong.getText().toString()))
+                {
+                    Toast.makeText(getApplicationContext(),"Nhập mã phòng!",Toast.LENGTH_LONG).show();
+                    flag=2;
+                }
+                if("".equals(txtGia.getText().toString()))
+                {
+                    Toast.makeText(getApplicationContext(),"Nhập giá!",Toast.LENGTH_LONG).show();
+                    flag=2;
+                }
+                if(flag==0)
+                {
+                    int mp=Integer.parseInt(txtMaPhong.getText().toString());
+                    String lp=(String)spnLoaiPhong.getSelectedItem();
+                    String tt=(String)spnTrangThai.getSelectedItem();
+                    String mt=txtMoTa.getText().toString();
+                    int g=Integer.parseInt(txtGia.getText().toString());
+                    Phong phong=new Phong(mp,lp,mt,g,tt);
+                    int mpxoa=intent.getIntExtra(QLPhongActivity.MAPHONG, 0);
+                    db.deletePhong(mpxoa);
+                    db.createPhong(phong);
+                    Toast.makeText(getApplicationContext(),"Đã sửa !",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(ChiTietPhongActivity.this,QLPhongActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }

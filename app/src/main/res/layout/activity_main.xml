@@ -33,6 +33,14 @@
             android:layout_marginTop="10pt"
             />
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="v.1.0" />
+
 
     </LinearLayout>
 
