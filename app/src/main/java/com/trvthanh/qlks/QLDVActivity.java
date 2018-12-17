@@ -12,15 +12,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 public class QLDVActivity extends Activity {
 
     private Button btnthemdv;
+    private Spinner spnDVT;
     private ListView listdv;
-    private ArrayList<DichVu> allDichVu;
-    private ArrayAdapter<DichVu> arrayAdapter;
+    private ArrayList<DichVu> allDichVu ;
+    private dichvuAdapter arrayAdapter;
+    Database db;
 
     public static final String MADV = "MaDichVu";
     public static final String TENDV = "TenDichVu";
@@ -28,7 +31,7 @@ public class QLDVActivity extends Activity {
     public static final String DVT = "DichVuThue";
     public static final String GIA = "Gia";
 
-    Database db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +50,29 @@ public class QLDVActivity extends Activity {
             }
         });
 
+
+
         //lay tat ca dich vu
 
         allDichVu = new ArrayList<>();
         allDichVu.addAll(db.getAllDichvu());
 
         listdv = findViewById(R.id.listdv);
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, allDichVu);
+        arrayAdapter = new dichvuAdapter(this, R.layout.activity_dichvu_adapter, allDichVu);
         listdv.setAdapter(arrayAdapter);
+
+        /*spnDVT.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                arrayAdapter.clear();
+                arrayAdapter.addAll(db.getAllDV((String)spnDVT.getItemAtPosition(position)));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
 
         listdv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

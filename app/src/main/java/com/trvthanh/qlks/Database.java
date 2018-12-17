@@ -259,6 +259,35 @@ public class Database extends SQLiteOpenHelper {
         }
         return dichVus;
     }
+    //getall by dv
+    public List<DichVu> getAllDV(String dvt) {
+        List<DichVu> dichVus = new ArrayList<DichVu>();
+        if (dvt.equals("All")) {
+            dichVus.addAll(getAllDichvu());
+        }
+        else{
+            String selectQuery = "SELECT  * FROM " + TABLE_DV+" WHERE "+KEY_DVT+" ='"+dvt+"'";
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor c = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                do {
+                    DichVu dv;
+                    dv = new DichVu();
+                    dv.setMaDV(c.getInt((c.getColumnIndex(KEY_MADV))));
+                    dv.setTenDV(c.getString(c.getColumnIndex(KEY_TENDV)));
+                    dv.setMoTaDV(c.getString(c.getColumnIndex(KEY_MOTADV)));
+                    dv.setDVT(c.getString(c.getColumnIndex(KEY_DVT)));
+                    dv.setGia(c.getInt(c.getColumnIndex(KEY_GIADV)));
+
+                    // adding to tags list
+                    dichVus.add(dv);
+                } while (c.moveToNext());
+            }
+        }
+        return dichVus;
+    }
     // xoa 1 dich vu
     public void deleteDichVu(int maDv) {
         SQLiteDatabase db = this.getWritableDatabase();

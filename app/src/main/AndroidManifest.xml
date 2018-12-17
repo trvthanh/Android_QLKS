@@ -22,13 +22,14 @@
         <activity android:name=".QLPhongActivity" />
         <activity android:name=".ChiTietPhongActivity" />
         <activity android:name=".Chitietnhanvien" />
-        <activity android:name=".chitietdv" />
+        <activity android:name=".chitietdv"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".ThemPhong" />
-        <activity android:name=".ThemDichVuActivity" />
+        <activity android:name=".ThemDichVuActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".ChiTietKhach" />
-        <activity android:name=".ThemKhach"/>
-        <activity android:name=".ThemNV"></activity>
-
+        <activity android:name=".ThemKhach" />
+        <activity android:name=".ThemNV" />
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,21 +10,16 @@
     <TextView
         android:id="@+id/txtDV"
         style="@style/header"
-        android:text="QL DỊCH VỤ"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:text="QL DỊCH VỤ" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnthemdv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnthemdv"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Thêm dịch vụ" />
+        android:layout_gravity="center_horizontal"
+        android:text="Thêm dịch vụ" />
 
-    </LinearLayout>
 
     <ListView
         android:id="@+id/listdv"

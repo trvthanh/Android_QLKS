@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ThemDichVuActivity">
-
+    <TextView
+        android:id="@+id/txtDV"
+        style="@style/header"
+        android:layout_gravity="center"
+        android:text="QL DỊCH VỤ" />
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
